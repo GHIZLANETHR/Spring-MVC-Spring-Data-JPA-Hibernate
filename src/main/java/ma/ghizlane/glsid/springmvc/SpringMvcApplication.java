@@ -5,9 +5,9 @@ import ma.ghizlane.glsid.springmvc.repository.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.security.autoconfigure.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-
-@SpringBootApplication
+@SpringBootApplication // Plus besoin d'exclure SecurityAutoConfiguration
 public class SpringMvcApplication {
 
     public static void main(String[] args) {
@@ -32,9 +32,9 @@ public class SpringMvcApplication {
                     .price(1200)
                     .quantity(33)
                     .build());
-            productRepository.findAll().forEach(p -> {
-                System.out.println(p.toString());
-            });
+
+            // Afficher tous les produits
+            productRepository.findAll().forEach(p -> System.out.println(p.toString()));
         };
     }
 }
